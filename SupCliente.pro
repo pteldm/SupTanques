@@ -9,12 +9,14 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    mysocket.cpp \
     supcliente_main_qt.cpp \
     supcliente_qt.cpp \
     supimg.cpp \
     suplogin.cpp
 
 HEADERS += \
+    mysocket.h \
     supcliente_qt.h \
     supdados.h \
     supimg.h \
