@@ -1,7 +1,10 @@
 #ifndef _SUP_SERVIDOR_H_
 #define _SUP_SERVIDOR_H_
 
-/* ACRESCENTAR */
+//bibliotecas incluídas:
+#include "mysocket.h"
+
+//Bibliotecas padrão do projeto:
 #include <string>
 #include <list>
 #include "tanques.h"
@@ -19,20 +22,20 @@ private:
     std::string password; // Senha
     bool isAdmin;         // Pode alterar (true) ou soh consultar (false) o sistema
     // Socket de comunicacao
-    /*ACRESCENTAR*/
+    tcp_mysocket MyConexion;
     // Construtor default
     User(const std::string& Login, const std::string& Senha, bool Admin)
       :login(Login)
       ,password(Senha)
       ,isAdmin(Admin)
-      /*ACRESCENTAR*/
-    {}
+      ,MyConexion()
+      {}
     // Comparacao com string (testa se a string eh igual ao login)
     bool operator==(const std::string& S) const {return login==S;}
     // Usuario estah conectado ou nao?
-    inline bool isConnected() const {return /*MODIFICAR*/false;}
+    inline bool isConnected() const {return MyConexion.connected();}
     // Desconecta usuario
-    inline void close() {/*ACRESCENTAR*/;}
+    inline void close() {MyConexion.close();}
   };
 
 public:
@@ -72,9 +75,9 @@ private:
   // Lista de usuarios do servidor
   std::list<User> LU;
   // Identificador da thread do servidor
-  /*ACRESCENTAR*/
+  std::thread MyServerThread;
   // Socket de conexoes
-  /*ACRESCENTAR*/
+  tcp_mysocket_server MyServerSocket;
 
   // Leitura do estado dos tanques a partir dos sensores
   void readStateFromSensors(SupState& S) const;

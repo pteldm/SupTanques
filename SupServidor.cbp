@@ -28,6 +28,8 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="mysocket.cpp" />
+		<Unit filename="mysocket.h" />
 		<Unit filename="supdados.cpp" />
 		<Unit filename="supdados.h" />
 		<Unit filename="supservidor.cpp" />

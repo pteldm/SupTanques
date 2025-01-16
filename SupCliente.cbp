@@ -27,6 +27,8 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="mysocket.cpp" />
+		<Unit filename="mysocket.h" />
 		<Unit filename="supcliente.cpp" />
 		<Unit filename="supcliente.h" />
 		<Unit filename="supcliente_main_term.cpp" />

@@ -13,12 +13,13 @@ SupServidor::SupServidor()
   : Tanks()
   , server_on(false)
   , LU()
-  /*ACRESCENTAR*/
+  , MyServerThread()
+  , MyServerSocket()
 {
   // Inicializa a biblioteca de sockets
-  /*ACRESCENTAR*/
+  mysocket::init();
   // Em caso de erro, mensagem e encerra
-  if (/*MODIFICAR*/true)
+  if (mysocket::init() == mysocket_status::SOCK_ERROR)
   {
     cerr <<  "Biblioteca mysocket nao pode ser inicializada";
     exit(-1);
@@ -34,13 +35,16 @@ SupServidor::~SupServidor()
   // Fecha todos os sockets dos clientes
   for (auto& U : LU) U.close();
   // Fecha o socket de conexoes
-  /*ACRESCENTAR*/
+  MyServerSocket.close();
 
   // Espera o fim da thread do servidor
-  /*ACRESCENTAR*/
+  if(MyServerThread.joinable())
+  {
+      MyServerThread.join();
+  }
 
   // Encerra a biblioteca de sockets
-  /*ACRESCENTAR*/
+  mysocket::end();
 }
 
 /// Liga o servidor
@@ -58,14 +62,14 @@ bool SupServidor::setServerOn()
   try
   {
     // Coloca o socket de conexoes em escuta
-    /*ACRESCENTAR*/
+    MyServerSocket.listen( SUP_PORT, LU.size());
     // Em caso de erro, gera excecao
-    if (/*MODIFICAR*/true) throw 1;
+    if ( MyServerSocket.listen( SUP_PORT, LU.size()) == mysocket_status::SOCK_ERROR ) throw 1;
 
     // Lanca a thread do servidor que comunica com os clientes
-    /*ACRESCENTAR*/
+    SupServidor::thr_server_main();
     // Em caso de erro, gera excecao
-    if (/*MODIFICAR*/true) throw 2;
+    if (!SupServidor::serverOn()) throw 2;
   }
   catch(int i)
   {
