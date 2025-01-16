@@ -1,0 +1,49 @@
+# depslib dependency file v1.0
+1736536470 source:c:\users\pedra\downloads\suptanques_incompleto\suptanques\mysocket.cpp
+	"mysocket.h"
+	<sys/types.h>
+	<netdb.h>
+	<unistd.h>
+
+1736536470 c:\users\pedra\downloads\suptanques_incompleto\suptanques\mysocket.h
+	<string>
+	<winsock2.h>
+	<ws2tcpip.h>
+	<sys/socket.h>
+
+1736525897 source:c:\users\pedra\downloads\suptanques_incompleto\suptanques\supdados.cpp
+	<iostream>
+	<iomanip>
+	<string>
+	"tanques-param.h"
+	"supdados.h"
+
+1736525898 c:\users\pedra\downloads\suptanques_incompleto\suptanques\tanques-param.h
+
+1736525897 c:\users\pedra\downloads\suptanques_incompleto\suptanques\supdados.h
+
+1736525898 source:c:\users\pedra\downloads\suptanques_incompleto\suptanques\supservidor_main.cpp
+	<iostream>
+	<cmath>
+	"supservidor.h"
+
+1736859961 c:\users\pedra\downloads\suptanques_incompleto\suptanques\supservidor.h
+	"mysocket.h"
+	<string>
+	<list>
+	"tanques.h"
+	"supdados.h"
+
+1736525898 c:\users\pedra\downloads\suptanques_incompleto\suptanques\tanques.h
+	<ctime>
+	<thread>
+	<mutex>
+	"tanques-param.h"
+
+1736525898 source:c:\users\pedra\downloads\suptanques_incompleto\suptanques\tanques.cpp
+	<iostream>
+	<cmath>
+	<chrono>
+	"tanques.h"
+	"supdados.h"
+

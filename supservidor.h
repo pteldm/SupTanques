@@ -1,10 +1,10 @@
 #ifndef _SUP_SERVIDOR_H_
 #define _SUP_SERVIDOR_H_
 
-//bibliotecas incluídas:
+//bibliotecas inclusas:
 #include "mysocket.h"
 
-//Bibliotecas padrão do projeto:
+//Bibliotecas default do projeto:
 #include <string>
 #include <list>
 #include "tanques.h"

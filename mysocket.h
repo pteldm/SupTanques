@@ -13,7 +13,7 @@
 ///*
 
 // #############################################################
-// ##  ATENCAO: PARA PODER COMPILAR NO WINDOWS VOCÊ DEVE:     ##
+// ##  ATENCAO: PARA PODER COMPILAR NO WINDOWS VOCï¿½ DEVE:     ##
 // ##  a) linkar com a biblioteca Ws2_32                      ##
 // ##  b) ativar no compilador a opcao -std=c++11 ou c++14,   ##
 // ##     caso jah nao seja a opcao por default               ##
@@ -325,4 +325,4 @@ class mysocket_queue
 
 };
 
-#endif
+#endif // _MYSOCKET_H_
