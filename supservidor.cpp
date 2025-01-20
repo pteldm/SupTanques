@@ -69,7 +69,7 @@ bool SupServidor::setServerOn()
     // Lanca a thread do servidor que comunica com os clientes
     SupServidor::thr_server_main();
     // Em caso de erro, gera excecao
-    if () throw 2;
+    if (/*MyServerThread.*/true) throw 2; //COMO IDENTIFICAR UM ERRO AO LANCAR UMA THREAD?
   }
   catch(int i)
   {
@@ -192,7 +192,7 @@ bool SupServidor::removeUser(const string& Login)
 void SupServidor::thr_server_main(void)
 {
   // Fila de sockets para aguardar chegada de dados
-  mysocket_queue t;
+  mysocket_queue fila_sockets;
 
   while (server_on)
   {
@@ -210,30 +210,30 @@ void SupServidor::thr_server_main(void)
       // quero monitorar para ver se houve chegada de dados
 
       // Limpa a fila de sockets
-      t.clear();
+      fila_sockets.clear();
       // Inclui na fila o socket de conexoes
-      t.include(MyServerSocket);
+      fila_sockets.include(MyServerSocket);
       // Inclui na fila todos os sockets dos clientes conectados
       for(auto &cliente: LU)
       {
         if(cliente.isConnected())
         {
-          t.include(cliente.MyConexion);
+          fila_sockets.include(cliente.MyConexion);
         }
       }
 
       // Espera ateh que chegue dado em algum socket (com timeout)
-      t.wait_read(1000);  //n sei se esse é o timeout ideal. eh soh uma ideia
-
+      fila_sockets.wait_read(SUP_TIMEOUT);  //n sei se esse é o timeout ideal. eh soh uma ideia
+      //como a fila vai verificar se chega dado em algum socket se ela não pode ser percorrida?
       // De acordo com o resultado da espera:
       // SOCK_TIMEOUT:
       // Saiu por timeout: nao houve atividade em nenhum socket
       // Aproveita para salvar dados ou entao nao faz nada
-      if(t.wait_read(1000) == mysocket_status::SOCK_TIMEOUT)
+      if(fila_sockets.wait_read(SUP_TIMEOUT) == mysocket_status::SOCK_TIMEOUT)
       {}
       // SOCK_ERROR:
       // Erro no select: encerra o servidor
-      if(t.wait_read(1000) == mysocket_status::SOCK_ERROR)
+      if(fila_sockets.wait_read(SUP_TIMEOUT) == mysocket_status::SOCK_ERROR)
       {
         server_on = false;
       }
@@ -249,15 +249,15 @@ void SupServidor::thr_server_main(void)
       //   - Testa usuario
       //   - Se deu tudo certo, faz o socket temporario ser o novo socket
       //     do cliente e envia confirmacao
-      if(t.wait_read(1000)==mysocket_status::SOCK_OK)
+      if(fila_sockets.wait_read(SUP_TIMEOUT)==mysocket_status::SOCK_OK)
       {
-          for(auto& cliente: LU)
-          {
-            if(t.had_activity(cliente.MyConexion))
-            {
-              MyServerSocket.
-            }
-          }
+		for(auto &cliente: LU)
+		{
+			if(fila_sockets.had_activity(cliente.MyConexion))
+			{
+				//MyServerSocket.
+			}
+		}
       }
 
     } // fim try - Erros mais graves que encerram o servidor
