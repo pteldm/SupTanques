@@ -47,3 +47,56 @@
 	"tanques.h"
 	"supdados.h"
 
+1736536470 source:c:\users\pedra\downloads\suptanques\suptanques\mysocket.cpp
+	"mysocket.h"
+	<sys/types.h>
+	<netdb.h>
+	<unistd.h>
+
+1737053015 c:\users\pedra\downloads\suptanques\suptanques\mysocket.h
+	<string>
+	<winsock2.h>
+	<ws2tcpip.h>
+	<sys/socket.h>
+
+1736525897 source:c:\users\pedra\downloads\suptanques\suptanques\supdados.cpp
+	<iostream>
+	<iomanip>
+	<string>
+	"tanques-param.h"
+	"supdados.h"
+
+1736525898 c:\users\pedra\downloads\suptanques\suptanques\tanques-param.h
+
+1736525897 c:\users\pedra\downloads\suptanques\suptanques\supdados.h
+
+1736525898 source:c:\users\pedra\downloads\suptanques\suptanques\supservidor_main.cpp
+	<iostream>
+	<cmath>
+	"supservidor.h"
+
+1737133929 c:\users\pedra\downloads\suptanques\suptanques\supservidor.h
+	"mysocket.h"
+	<string>
+	<list>
+	"tanques.h"
+	"supdados.h"
+
+1736525898 c:\users\pedra\downloads\suptanques\suptanques\tanques.h
+	<ctime>
+	<thread>
+	<mutex>
+	"tanques-param.h"
+
+1736525898 source:c:\users\pedra\downloads\suptanques\suptanques\tanques.cpp
+	<iostream>
+	<cmath>
+	<chrono>
+	"tanques.h"
+	"supdados.h"
+
+1737574125 source:c:\users\pedra\downloads\suptanques\suptanques\supservidor.cpp
+	<iostream>
+	<algorithm>
+	"supservidor.h"
+
